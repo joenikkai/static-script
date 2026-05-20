@@ -374,3 +374,4 @@ temp/
 *.cb2
 .*.swp
 *~
+compile_commands*

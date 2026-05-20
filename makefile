@@ -1,0 +1,33 @@
+CXX = g++
+
+STD = --std=c++23
+
+BINARY = bin/static-script
+
+SOURCES = $(shell find . -type f -name "*.cpp")
+
+OBJECTS = $(SOURCES:%.o=cpp)
+
+CXXFLAGS := $(STD)
+LDFLAGS ?= 
+
+
+.PHONY: all bin
+all: $(BINARY)
+
+$(BINARY): $(OBJECTS) | bin
+	$(CXX) -o $@ -g $< $(CXXFLAGS) $(LDFLAGS)
+
+%.o: %.c
+	$(CXX) -c -g -o $@ $< $(CXXFLAGS)
+
+
+bin:
+	mkdir -p $@
+
+.PHONY: run  clean 
+run: $(BINARY)
+	./$<
+
+clean:
+	rm -fr $(BINARY)
