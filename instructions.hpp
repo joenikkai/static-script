@@ -1,0 +1,7 @@
+#ifndef INSTRUCTIONS_HPP
+#define INSTRUCTIONS_HPP
+enum instructions
+{
+    INSTRUCTIONS_COUNT
+};
+#endif // INSTRUCTIONS_HPP
