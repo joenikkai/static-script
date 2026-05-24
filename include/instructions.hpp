@@ -29,7 +29,7 @@
  *
  */
 
-enum types : uint64_t
+enum types : uint8_t
 {
     INSTRUCTIONS = 0x0,
     ADDRESS,
