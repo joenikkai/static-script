@@ -1,24 +1,31 @@
-CXX = g++
 
-# CXXSTD = --std=c++23
+include ./make.conf
 
-BINARY = bin/static-script
+VM ?=
+VM_DIR = 
+ifeq ($(VM),register_vm)
+  VM = obj/register_vm.o
+  VM_DIR = vm/register_vm
+else
+  VM = obj/stack_vm.o
+  VM_DIR = vm/stack_vm
+endif
 
-SOURCES = $(shell find . -type f -name "*.cpp")
+OBJECTS = assember/assembler.o \
+  vm/vm.o \
+  vm/get_data.o \
+  vm/get_type.o \
+  $(VM)
 
-OBJECTS = $(SOURCES:%.o=cpp)
-
-CXXFLAGS := $(CXXSTD)
-LDFLAGS ?= 
-
+OBJECT_DIRS = $(sort $(dir $(OBJECTS)))
 
 .PHONY: all bin
 all: $(BINARY)
 
 $(BINARY): $(OBJECTS) | bin
-	$(CXX) -o $@ -g $< $(CXXFLAGS) $(LDFLAGS)
+	$(CXX) -o $@ -g $^ $(CXXFLAGS) $(LDFLAGS)
 
-%.o: %.c
+%.o: %.cpp
 	$(CXX) -c -g -o $@ $< $(CXXFLAGS)
 
 
@@ -31,3 +38,24 @@ run: $(BINARY)
 
 clean:
 	rm -fr $(BINARY)
+
+$(OBJECTS):
+
+vm/register_vm.o: vm/register_vm.o \
+  vm/register_vm/fetch.o \
+  vm/register_vm/decode.o \
+  vm/register_vm/execute.o \
+  vm/register_vm/run.o \
+  vm/register_vm/reg.o
+
+
+vm/stack_vm.o: vm/stack_vm.o \
+  vm/stack_vm/fetch.o \
+  vm/stack_vm/decode.o \
+  vm/stack_vm/execute.o \
+  vm/stack_vm/run.o \
+  vm/stack_vm/reg.o
+
+# vm/vm.o: vm/vm.cpp
+
+assember/assember.o: assember/assember.cpp
