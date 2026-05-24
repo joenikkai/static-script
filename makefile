@@ -4,14 +4,26 @@ include ./make.conf
 VM ?=
 VM_DIR = 
 ifeq ($(VM),register_vm)
-  VM = obj/register_vm.o
+  VM = vm/register_vm.o \
+    vm/register_vm/fetch.o \
+    vm/register_vm/decode.o \
+    vm/register_vm/execute.o \
+    vm/register_vm/run.o 
+
   VM_DIR = vm/register_vm
 else
-  VM = obj/stack_vm.o
+  VM = vm/stack_vm.o \
+    vm/stack_vm/fetch.o \
+    vm/stack_vm/decode.o \
+    vm/stack_vm/execute.o \
+    vm/stack_vm/run.o 
+
   VM_DIR = vm/stack_vm
 endif
 
-OBJECTS = assember/assembler.o \
+OBJECTS = \
+  main.o \
+  asm/asm.o \
   vm/vm.o \
   vm/get_data.o \
   vm/get_type.o \
@@ -19,6 +31,7 @@ OBJECTS = assember/assembler.o \
 
 OBJECT_DIRS = $(sort $(dir $(OBJECTS)))
 
+SOURCES = 
 .PHONY: all bin
 all: $(BINARY)
 
@@ -30,7 +43,7 @@ $(BINARY): $(OBJECTS) | bin
 
 
 bin:
-	mkdir -p $@
+	@mkdir -p $@
 
 .PHONY: run  clean 
 run: $(BINARY)
@@ -38,26 +51,13 @@ run: $(BINARY)
 
 clean:
 	rm -fr $(BINARY)
-	find . -name "*.o" -exec {} \;
-
+	find . -name "*.o" -exec rm -fr {} \;
 
 $(OBJECTS):
 
-vm/register_vm.o: vm/register_vm.o \
-  vm/register_vm/fetch.o \
-  vm/register_vm/decode.o \
-  vm/register_vm/execute.o \
-  vm/register_vm/run.o \
-  vm/register_vm/reg.o
+# $(OBJECT_DIRS):
+# 	@for d in $@; do \
+# 	    echo $$d  here; \
+# 	done
 
 
-vm/stack_vm.o: vm/stack_vm.o \
-  vm/stack_vm/fetch.o \
-  vm/stack_vm/decode.o \
-  vm/stack_vm/execute.o \
-  vm/stack_vm/run.o \
-  vm/stack_vm/reg.o
-
-# vm/vm.o: vm/vm.cpp
-
-assember/assember.o: assember/assember.cpp
