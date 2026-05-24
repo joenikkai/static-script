@@ -22,11 +22,11 @@ namespace vm
         virtual void decode() = 0;
         virtual void execute() = 0;
         virtual void run() = 0;
-        inline uint64_t get_word(uint64_t index)
+        inline uint64_t get_word(uint64_t index) // Check if vm is still executing
         {
             return this->program[index];
         }
-        inline void stop()
+        inline void stop() // Stop execution
         {
             this->running = false;
         }
