@@ -1,4 +1,4 @@
-#include "vm.hpp"
+#include "../vm.hpp"
 
 void vm::register_vm::run()
 {
