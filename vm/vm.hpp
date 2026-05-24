@@ -32,10 +32,10 @@ namespace vm
 
     public:
         stack_vm(std::vector<u64> program);
-        void fetch();
-        void decode();
-        void execute();
-        void run();
+        void fetch() override;
+        void decode() override;
+        void execute() override;
+        void run() override;
         ~stack_vm();
     };
 
@@ -48,10 +48,10 @@ namespace vm
 
     public:
         register_vm(std::vector<u64> program);
-        void fetch();
-        void decode();
-        void execute();
-        void run();
+        void fetch() override;
+        void decode() override;
+        void execute() override;
+        void run() override;
         ~register_vm();
     };
 
