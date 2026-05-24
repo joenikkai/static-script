@@ -26,6 +26,14 @@ namespace vm
         {
             return this->program[index];
         }
+        inline void stop()
+        {
+            this->running = false;
+        }
+        inline bool isrunning()
+        {
+            return this->running;
+        }
         uint8_t get_type(uint64_t word);
         uint64_t get_data(uint64_t word);
         virtual ~vm();
