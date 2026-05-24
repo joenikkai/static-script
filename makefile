@@ -16,7 +16,7 @@ LDFLAGS ?=
 all: $(BINARY)
 
 $(BINARY): $(OBJECTS) | bin
-	$(CXX) -o $@ -g $< $(CXXFLAGS) $(LDFLAGS)
+	$(CXX) -o $@ -g $^ $(CXXFLAGS) $(LDFLAGS)
 
 %.o: %.c
 	$(CXX) -c -g -o $@ $< $(CXXFLAGS)
