@@ -18,7 +18,7 @@ namespace vm
 
     public:
         vm(std::vector<uint64_t> program);
-        virtual void fetch() = 0;
+        virtual uint64_t fetch() = 0;
         virtual void decode() = 0;
         virtual void execute() = 0;
         virtual void run() = 0;
@@ -54,10 +54,12 @@ namespace vm
 
     public:
         stack_vm(std::vector<uint64_t> program);
-        void fetch() override;
+        uint64_t fetch() override;
         void decode() override;
         void execute() override;
         void run() override;
+        void push(uint64_t word);
+        uint64_t pop();
         ~stack_vm();
     };
 
@@ -70,7 +72,7 @@ namespace vm
 
     public:
         register_vm(std::vector<uint64_t> program);
-        void fetch() override;
+        uint64_t fetch() override;
         void decode() override;
         void execute() override;
         void run() override;
