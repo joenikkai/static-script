@@ -1,6 +1,6 @@
 CXX = g++
 
-STD = --std=c++23
+# CXXSTD = --std=c++23
 
 BINARY = bin/static-script
 
@@ -8,7 +8,7 @@ SOURCES = $(shell find . -type f -name "*.cpp")
 
 OBJECTS = $(SOURCES:%.o=cpp)
 
-CXXFLAGS := $(STD)
+CXXFLAGS := $(CXXSTD)
 LDFLAGS ?= 
 
 
