@@ -31,3 +31,4 @@ run: $(BINARY)
 
 clean:
 	rm -fr $(BINARY)
+	find . -name "*.o" -exec {} \;
