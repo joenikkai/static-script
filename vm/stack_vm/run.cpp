@@ -2,7 +2,7 @@
 
 void vm::stack_vm::run()
 {
-    vm::fetch();
-    vm::decode();
-    vm::execute();
+    stack_vm::fetch();
+    stack_vm::decode();
+    stack_vm::execute();
 }

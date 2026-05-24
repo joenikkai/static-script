@@ -2,7 +2,7 @@
 
 void vm::register_vm::run()
 {
-    vm::fetch();
-    vm::decode();
-    vm::execute();
+    register_vm::fetch();
+    register_vm::decode();
+    register_vm::execute();
 }
