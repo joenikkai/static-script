@@ -14,10 +14,10 @@ namespace vm
 
     public:
         vm(std::vector<u64> program);
-        virtual void fetch();
-        virtual void decode();
-        virtual void execute();
-        virtual void run();
+        virtual void fetch() = 0;
+        virtual void decode() = 0;
+        virtual void execute() = 0;
+        virtual void run() = 0;
         uint8_t get_type(uint64_t word);
         uint64_t get_data(uint64_t word);
         virtual ~vm();
@@ -31,11 +31,30 @@ namespace vm
         std::vector<u64> heap_addresses;
 
     public:
+        stack_vm(std::vector<u64> program);
         void fetch();
         void decode();
         void execute();
         void run();
+        ~stack_vm();
     };
+
+    class register_vm : vm
+    {
+    private:
+        std::vector<u64> registers;
+        std::vector<u64> call_register;
+        std::vector<u64> heap_addresses;
+
+    public:
+        register_vm(std::vector<u64> program);
+        void fetch();
+        void decode();
+        void execute();
+        void run();
+        ~register_vm();
+    };
+
 }
 
 #endif // VM_HPP

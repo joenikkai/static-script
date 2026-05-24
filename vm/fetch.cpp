@@ -1,6 +1,9 @@
 #include "vm.hpp"
 
 
-void vm::vm::fetch()
+void vm::register_vm::fetch()
 {}
 
+void vm::stack_vm::fetch()
+{
+}
