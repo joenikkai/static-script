@@ -23,7 +23,7 @@ namespace vm
         virtual ~vm();
     };
 
-    class stack_vm : vm
+    class stack_vm : public vm
     {
     private:
         std::vector<u64> stack;
@@ -39,7 +39,7 @@ namespace vm
         ~stack_vm();
     };
 
-    class register_vm : vm
+    class register_vm : public vm
     {
     private:
         std::vector<u64> registers;
