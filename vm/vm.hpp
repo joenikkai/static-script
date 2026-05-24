@@ -14,6 +14,7 @@ namespace vm
     {
     private:
         std::vector<uint64_t> program;
+        bool is_running;
 
     public:
         vm(std::vector<uint64_t> program);
