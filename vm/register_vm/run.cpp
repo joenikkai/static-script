@@ -2,7 +2,10 @@
 
 void vm::register_vm::run()
 {
-    register_vm::fetch();
-    register_vm::decode();
-    register_vm::execute();
+    while(this->isrunning())
+    {
+        register_vm::fetch();
+        register_vm::decode();
+        register_vm::execute();
+    }
 }
