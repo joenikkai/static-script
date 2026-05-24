@@ -3,17 +3,17 @@
 #include <cstdint>
 #include <vector>
 
+#include "../include/instructions.hpp"
 
 namespace vm
 {
-    typedef uint64_t u64;
     class vm
     {
     private:
-        std::vector<u64> program;
+        std::vector<uint64_t> program;
 
     public:
-        vm(std::vector<u64> program);
+        vm(std::vector<uint64_t> program);
         virtual void fetch() = 0;
         virtual void decode() = 0;
         virtual void execute() = 0;
@@ -26,12 +26,13 @@ namespace vm
     class stack_vm : public vm
     {
     private:
-        std::vector<u64> stack;
-        std::vector<u64> call_stack;
-        std::vector<u64> heap_addresses;
+
+        std::vector<uint64_t> stack;
+        std::vector<uint64_t> call_stack;
+        std::vector<uint64_t> heap_addresses;
 
     public:
-        stack_vm(std::vector<u64> program);
+        stack_vm(std::vector<uint64_t> program);
         void fetch() override;
         void decode() override;
         void execute() override;
@@ -42,12 +43,12 @@ namespace vm
     class register_vm : public vm
     {
     private:
-        std::vector<u64> registers;
-        std::vector<u64> call_register;
-        std::vector<u64> heap_addresses;
+        std::vector<uint64_t> registers;
+        std::vector<uint64_t> call_register;
+        std::vector<uint64_t> heap_addresses;
 
     public:
-        register_vm(std::vector<u64> program);
+        register_vm(std::vector<uint64_t> program);
         void fetch() override;
         void decode() override;
         void execute() override;
