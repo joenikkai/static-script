@@ -2,4 +2,5 @@
 
 void vm::stack_vm::fetch()
 {
+    this->pc++;
 }
