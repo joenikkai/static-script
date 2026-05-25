@@ -1,5 +1,6 @@
 #include "../vm.hpp"
 
-void vm::register_vm::fetch()
-{}
-
+uint64_t vm::register_vm::fetch()
+{
+    return 0;
+}
