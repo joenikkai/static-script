@@ -16,7 +16,10 @@ else
     vm/stack_vm/fetch.o \
     vm/stack_vm/decode.o \
     vm/stack_vm/execute.o \
-    vm/stack_vm/run.o 
+    vm/stack_vm/run.o \
+    vm/stack_vm/pop.o \
+    vm/stack_vm/push.o 
+
 
   VM_DIR = vm/stack_vm
 endif
