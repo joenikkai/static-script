@@ -1,6 +1,6 @@
 #include "../vm.hpp"
 
-void vm::stack_vm::fetch()
+uint64_t vm::stack_vm::fetch()
 {
-    this->pc++;
+    return this->pc++;
 }
