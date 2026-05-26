@@ -5,6 +5,9 @@
 
 void vm::stack_vm::execute()
 {
+    this->decode();
+    
+
     if (this->type == types::INSTRUCTIONS)
     {
         switch (this->data)
