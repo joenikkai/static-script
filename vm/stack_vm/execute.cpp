@@ -2,11 +2,15 @@
 #include <stdexcept>
 #include <sstream>
 
+#define DEBUG
+// #undef DEBUG
 
 void vm::stack_vm::execute()
 {
     this->decode();
-    
+
+#ifndef DEBUG
+#endif // DEBUG
 
     if (this->type == types::INSTRUCTIONS)
     {
