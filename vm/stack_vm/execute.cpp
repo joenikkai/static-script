@@ -12,14 +12,14 @@ void vm::stack_vm::execute()
 
 #ifdef DEBUG
 std::cout << "execution cycle: " << 
-    "\n\ttype: " << this->type <<
-    "\n\tdata: " << this->data <<
+    "\n\ttype: " << this->opcode.type <<
+    "\n\tdata: " << this->opcode.data <<
     "\n";
 #endif // DEBUG
 
-    if (this->type == types::INSTRUCTIONS)
+    if (this->opcode.type == types::INSTRUCTIONS)
     {
-        switch (this->data)
+        switch (this->opcode.data)
         {
         case instructions::HALT: {
             this->stop();
@@ -27,10 +27,11 @@ std::cout << "execution cycle: " <<
         }
 
         case instructions::PUSH:{
-            this->push(this->get_word(this->fetch()));
+            this->push();
             break;
         }
         case instructions::POP:{
+            (this->pop());
             break;
         }
         case instructions::PUSH_BP:{
@@ -109,8 +110,8 @@ std::cout << "execution cycle: " <<
         default:{
             std::stringstream err;
             err << "Unknown operand. Please check on operand and if you intended for it to be. Add it to the switch case" << 
-                "\n\ttype: " << this->type << 
-                "\n\tdata: " << this->data << 
+                "\n\ttype: " << this->opcode.type << 
+                "\n\tdata: " << this->opcode.data << 
                 "\n";
             throw std::runtime_error(err.str());
             break;
