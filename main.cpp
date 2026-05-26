@@ -15,9 +15,10 @@ int main(int argc, char** argv)
         assembler.make_code(types::INSTRUCTIONS, instructions::PUSH),
         assembler.make_code(types::CHARACTER, '\n'),
         assembler.make_code(types::INSTRUCTIONS, instructions::WRITE),
+        assembler.make_code(types::INSTRUCTIONS, instructions::POP),
         assembler.make_code(types::INSTRUCTIONS, instructions::WRITE),
-        assembler.make_code(types::INSTRUCTIONS, instructions::HALT)
-    };
+        assembler.make_code(types::INSTRUCTIONS, instructions::POP),
+        assembler.make_code(types::INSTRUCTIONS, instructions::HALT)};
     vm::stack_vm ss_vm(program);
 #ifdef DEBUG
     for (uint64_t& code:program)
