@@ -13,7 +13,7 @@ namespace ss_asm
         /* data */
     public:
         ss_asm(/* args */);
-        uint64_t make_code(enum types t,);
+        uint64_t make_code(enum types t,uint64_t d);
         ~ss_asm();
     };
     
