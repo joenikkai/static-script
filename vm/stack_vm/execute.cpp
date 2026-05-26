@@ -1,6 +1,7 @@
 #include "../vm.hpp"
 #include <stdexcept>
 #include <sstream>
+#include <iostream>
 
 #define DEBUG
 // #undef DEBUG
@@ -9,7 +10,11 @@ void vm::stack_vm::execute()
 {
     this->decode();
 
-#ifndef DEBUG
+#ifdef DEBUG
+std::cout << "execution cycle: " << 
+    "\n\ttype: " << this->type <<
+    "\n\tdata: " << this->data <<
+    "\n";
 #endif // DEBUG
 
     if (this->type == types::INSTRUCTIONS)
