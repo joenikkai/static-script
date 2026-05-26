@@ -10,6 +10,12 @@
 
 namespace vm
 {
+    struct op_code_type1
+    {
+        uint8_t type;
+        uint64_t data;
+    };
+
     class vm
     {
     private:
@@ -42,15 +48,14 @@ namespace vm
     class stack_vm : public vm
     {
     private:
-        uint8_t type = 0;
-        uint64_t data = 0;
-        uint64_t bp = 0; // base pointer
-        uint64_t sp = 0; // stack pointer
-        uint64_t pc = 0; // program counter
+        struct op_code_type1 opcode; /* currently executing opcode */
+        uint64_t bp = 0; /* base pointer */
+        uint64_t sp = 0; /* stack pointer */
+        uint64_t pc = 0; /* program counter */
 
-        std::vector<uint64_t> stack;
-        std::vector<uint64_t> call_stack;
-        std::vector<uint64_t> heap_addresses;
+        std::vector<struct op_code_type1> stack;
+        std::vector<struct op_code_type1> call_stack;
+        std::vector<struct op_code_type1> heap_addresses;
 
     public:
         stack_vm(std::vector<uint64_t> program);
