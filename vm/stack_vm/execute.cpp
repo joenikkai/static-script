@@ -27,6 +27,7 @@ std::cout << "execution cycle: " <<
         }
 
         case instructions::PUSH:{
+            this->push(this->get_word(this->fetch()));
             break;
         }
         case instructions::POP:{
