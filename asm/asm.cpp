@@ -1,9 +1,9 @@
-#include "asm.hpp"
+#include "ss_asm.hpp"
 
-asm::asm::asm(/* args */)
+ss_asm::ss_asm::ss_asm(/* args */)
 {
 }
 
-asm::asm::~asm()
+ss_asm::ss_asm::~ss_asm()
 {
 }

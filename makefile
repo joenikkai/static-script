@@ -26,7 +26,7 @@ endif
 
 OBJECTS = \
   main.o \
-  asm/asm.o \
+  ss_asm/ss_asm.o \
   vm/vm.o \
   vm/get_data.o \
   vm/get_type.o \

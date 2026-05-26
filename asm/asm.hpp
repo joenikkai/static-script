@@ -1,18 +1,18 @@
-#ifndef ASM_HPP
+#ifndef SS_ASM_HPP
 
-#define ASM_HPP
+#define SS_ASM_HPP
 
 #include "../include/instructions.hpp"
 
-namespace asm 
+namespace ss_asm 
 {
-    class asm
+    class ss_asm
     {
     private:
         /* data */
     public:
-        asm(/* args */);
-        ~asm();
+        ss_asm(/* args */);
+        ~ss_asm();
     };
     
 
@@ -22,4 +22,4 @@ namespace asm
 
 
 
-#endif // ASM_HPP
+#endif // SS_ASM_HPP
