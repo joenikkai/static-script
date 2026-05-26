@@ -1,6 +1,10 @@
 #include <iostream>
 #include "vm/vm.hpp"
 
+
+#define DEBUG
+#undef DEBUG
+
 int main(int argc, char** argv)
 {
     std::cout << ("This will be out main entry point\n");
