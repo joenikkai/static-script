@@ -1,5 +1,6 @@
 #include "../vm.hpp"
 #include <stdexcept>
+#include <sstream>
 
 
 void vm::stack_vm::execute()
@@ -93,7 +94,12 @@ void vm::stack_vm::execute()
         }
 
         default:{
-            throw std::runtime_error("Unknown operand. Please check on operand and if you intended for it to be. Add it to the switch case");
+            std::stringstream err;
+            err << "Unknown operand. Please check on operand and if you intended for it to be. Add it to the switch case" << 
+                "\n\ttype: " << this->type << 
+                "\n\tdata: " << this->data << 
+                "\n";
+            throw std::runtime_error(err.str());
             break;
         }
         }
