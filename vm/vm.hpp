@@ -63,8 +63,8 @@ namespace vm
         void decode() override;
         void execute() override;
         void run() override;
-        void push(uint64_t word);
-        uint64_t pop();
+        void push();
+        struct op_code_type1 pop();
         ~stack_vm();
     };
 
