@@ -6,7 +6,7 @@ void vm::stack_vm::execute()
 {
     if (this->type == types::INSTRUCTIONS)
     {
-        switch (this->type)
+        switch (this->data)
         {
         case instructions::HALT: {
             this->stop();
