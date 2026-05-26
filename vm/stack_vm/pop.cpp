@@ -1,11 +1,11 @@
 #include "../vm.hpp"
 #include <stdexcept>
 
-uint64_t vm::stack_vm::pop()
+vm::op_code_type1 vm::stack_vm::pop()
 {
     if (this->stack.empty())
         throw std::runtime_error("stack underflow");
-    uint64_t val = this->stack.back();
+    struct op_code_type1 val = this->stack.back();
     this->stack.pop_back();
     return val;
 }
