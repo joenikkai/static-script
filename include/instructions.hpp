@@ -29,6 +29,11 @@
  *
  */
 
+#define DATA_REGION_BITS 56 /* The region as described above */
+#define DATA_REGION_MASK 0x00FFFFFFFFFFFFULL /* The region as described above \brief (unsigned long long)281474976710655ULL */
+#define TYPE_REGION_BITS 8 /* As described above */
+#define TYPE_REGION_MASK 0xff /* As described above \brief (int)255 */
+
 enum types : uint8_t
 {
     INSTRUCTIONS = 0x0,

@@ -7,6 +7,6 @@
 
 uint64_t vm::vm::get_data(uint64_t word)
 {
-    return word & 0x00FFFFFFFFFFFFULL;
+    return word & DATA_REGION_MASK;
 }
 
