@@ -12,7 +12,7 @@ void vm::stack_vm::execute()
 
 #ifdef DEBUG
 std::cout << "execution cycle: " << 
-    "\n\ttype: " << this->opcode.type <<
+    "\n\ttype: " << (uint16_t)this->opcode.type <<
     "\n\tdata: " << this->opcode.data <<
     "\n";
 #endif // DEBUG
@@ -62,6 +62,25 @@ std::cout << "execution cycle: " <<
             break;
         }
         case instructions::WRITE:{
+            switch (this->opcode.type)
+            {
+                case types::CHARACTER:
+                {
+                    std::cout << (unsigned char)this->stack.back().data;
+                    break;
+                }
+
+                case types::ADDRESS:
+                {
+                    std::cout << "0x"<< std::hex<<this->stack.back().data;
+                    break;
+                }
+                default:
+                {
+                    std::cout << this->stack.back().data;
+                    break;
+                }
+            }
             break;
         }
         case instructions::DP:{
@@ -110,7 +129,7 @@ std::cout << "execution cycle: " <<
         default:{
             std::stringstream err;
             err << "Unknown operand. Please check on operand and if you intended for it to be. Add it to the switch case" << 
-                "\n\ttype: " << this->opcode.type << 
+                "\n\ttype: " << (uint16_t)this->opcode.type << 
                 "\n\tdata: " << this->opcode.data << 
                 "\n";
             throw std::runtime_error(err.str());
